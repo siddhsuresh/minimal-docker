@@ -37,7 +37,7 @@
                     "dockerContext": ".",
                     "dockerfilePath": "Dockerfile",
                     "includeEnvVariablesInBuild": false,
-                    "injectEnvVariablesInDockerfile": true
+                    "injectEnvVariablesInDockerfile": false
                 }
             ]
         },
