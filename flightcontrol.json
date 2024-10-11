@@ -21,7 +21,7 @@
                     },
                     "id": "lambda",
                     "name": "Lambda",
-                    "type": "worker",
+                    "type": "lambda-function",
                     "lambda": {
                         "fnUrl": {
                             "enabled": false
