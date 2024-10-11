@@ -51,7 +51,7 @@
                     "instanceSize": "db.t4g.micro",
                     "engineVersion": "16",
                     "deletionProtection": false,
-                    "applyChangesImmediately": false,
+                    "applyChangesImmediately": true,
                     "autoUpgradeMinorVersions": true,
                     "connectionStringEnvVarName": "DATABASE_URL"
                 }
