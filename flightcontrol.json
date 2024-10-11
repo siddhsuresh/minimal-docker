@@ -38,6 +38,22 @@
                     "dockerfilePath": "Dockerfile",
                     "includeEnvVariablesInBuild": false,
                     "injectEnvVariablesInDockerfile": false
+                },
+                {
+                    "id": "database",
+                    "name": "Database",
+                    "port": 5432,
+                    "type": "rds",
+                    "engine": "postgres",
+                    "private": false,
+                    "storage": 20,
+                    "maxStorage": 100,
+                    "instanceSize": "db.t4g.micro",
+                    "engineVersion": "16",
+                    "deletionProtection": false,
+                    "applyChangesImmediately": false,
+                    "autoUpgradeMinorVersions": true,
+                    "connectionStringEnvVarName": "DATABASE_URL"
                 }
             ]
         },
