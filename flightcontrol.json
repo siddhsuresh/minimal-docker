@@ -21,20 +21,23 @@
                     },
                     "id": "lambda",
                     "name": "Lambda",
-                    "cpu": 1,
-                    "gpu": 0,
-                    "jobs": {},
-                    "type": "scheduler",
-                    "memory": 2,
-                    "target": {
-                            "type": "fargate"
+                    "type": "worker",
+                    "lambda": {
+                        "fnUrl": {
+                            "enabled": false
+                        },
+                        "memory": 128,
+                        "packageType": "image",
+                        "timeoutSecs": 3,
+                        "ephemeralStorage": 512
                     },
                     "basePath": ".",
-                    "buildType": "nixpacks",
+                    "buildType": "docker",
                     "envVariables": {},
-                    "containerInsights": false,
-                    "versionHistoryCount": 10,
-                    "includeEnvVariablesInBuild": true
+                    "dockerContext": ".",
+                    "dockerfilePath": "Dockerfile",
+                    "includeEnvVariablesInBuild": false,
+                    "injectEnvVariablesInDockerfile": false
                 }
             ]
         },
