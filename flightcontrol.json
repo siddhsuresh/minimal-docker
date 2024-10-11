@@ -33,7 +33,15 @@
                     },
                     "basePath": ".",
                     "buildType": "docker",
-                    "envVariables": {},
+                    "envVariables": {
+                        "APP_ENV": "production",
+                        "DATABASE_URL": {
+                            "fromService": {
+                                "id": "db",
+                                "value": "dbConnectionString"
+                            }
+                        }
+                    }
                     "dockerContext": ".",
                     "dockerfilePath": "Dockerfile",
                     "includeEnvVariablesInBuild": false,
