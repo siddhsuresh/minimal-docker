@@ -46,7 +46,7 @@
                     "type": "rds",
                     "engine": "postgres",
                     "private": false,
-                    "storage": 30,
+                    "storage": 20,
                     "maxStorage": 100,
                     "instanceSize": "db.t4g.micro",
                     "engineVersion": "16",
