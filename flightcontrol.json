@@ -13,11 +13,7 @@
             "services": [
                 {
                     "ci": {
-                        "type": "ec2",
-                        "storageIops": 3000,
-                        "storageType": "gp3",
-                        "instanceStorage": 30,
-                        "storageThroughput": 125
+                        "type": "codebuild"
                     },
                     "id": "lambda",
                     "name": "Lambda",
@@ -36,7 +32,7 @@
                     "envVariables": {},
                     "dockerContext": ".",
                     "dockerfilePath": "Dockerfile",
-                    "includeEnvVariablesInBuild": true,
+                    "includeEnvVariablesInBuild": false,
                     "injectEnvVariablesInDockerfile": false
                 },
                 {
