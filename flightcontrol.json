@@ -32,8 +32,8 @@
                     "envVariables": {},
                     "dockerContext": ".",
                     "dockerfilePath": "Dockerfile",
-                    "includeEnvVariablesInBuild": true,
-                    "injectEnvVariablesInDockerfile": true
+                    "includeEnvVariablesInBuild": false,
+                    "injectEnvVariablesInDockerfile": false
                 },
                 {
                     "id": "database",
