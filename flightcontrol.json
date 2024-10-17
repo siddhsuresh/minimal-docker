@@ -32,7 +32,7 @@
                     "envVariables": {},
                     "dockerContext": ".",
                     "dockerfilePath": "Dockerfile",
-                    "includeEnvVariablesInBuild": false,
+                    "includeEnvVariablesInBuild": true,
                     "injectEnvVariablesInDockerfile": false
                 },
                 {
