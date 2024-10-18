@@ -19,7 +19,7 @@
                         "instanceStorage": 30,
                         "storageThroughput": 125
                     },
-                    "id": "lambda",
+                    "id": "lambda-dev",
                     "name": "Lambda",
                     "type": "lambda-function",
                     "lambda": {
