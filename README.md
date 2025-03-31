@@ -1,3 +1,1 @@
 # minimal-docker
-
-haha
