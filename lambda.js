@@ -1,5 +1,5 @@
 exports.handler = async (event) => {
-    console.log("Hello World 4")
+    console.log(process.env)
     const response = {
         statusCode: 200,
         body: JSON.stringify('Hello from Lambda!'),
