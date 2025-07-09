@@ -14,7 +14,7 @@
         {
           "ci": { "type": "codebuild" },
           "id": "lambda-function-n5QndV",
-          "name": "Lambda Function",
+          "name": "Lambda Function (Image)",
           "type": "lambda-function",
           "lambda": {
             "vpc": false,
@@ -43,7 +43,7 @@
         {
           "ci": { "type": "codebuild" },
           "id": "lambda-function-f4ZyQ7",
-          "name": "Lambda Function",
+          "name": "Lambda Function (Zip)",
           "type": "lambda-function",
           "lambda": {
             "vpc": false,
