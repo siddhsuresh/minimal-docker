@@ -1,91 +1,119 @@
 {
-    "$schema": "https://app.flightcontrol.dev/schema.json",
-    "environments": [
+  "$schema": "https://app.flightcontrol.dev/schema.json",
+  "environments": [
+    {
+      "id": "production",
+      "name": "Lambda",
+      "region": "eu-north-1",
+      "source": {
+        "branch": "main",
+        "pr": false,
+        "trigger": "push"
+      },
+      "services": [
         {
-            "id": "production",
-            "name": "Lambda",
-            "region": "eu-south-1",
-            "source": {
-                "branch": "main",
-                "pr": false,
-                "trigger": "push"
+          "ci": { "type": "codebuild" },
+          "id": "lambda-function-n5QndV",
+          "name": "Lambda Function",
+          "type": "lambda-function",
+          "lambda": {
+            "vpc": false,
+            "fnUrl": {
+              "enabled": true,
+              "authType": "None",
+              "invokeMode": "ResponseStream"
             },
-            "services": [
-                {
-                    "ci": {
-                        "type": "ec2",
-                        "storageIops": 3000,
-                        "storageType": "gp3",
-                        "instanceStorage": 30,
-                        "storageThroughput": 125
-                    },
-                    "id": "lambda-dev",
-                    "name": "Lambda",
-                    "type": "lambda-function",
-                    "lambda": {
-                        "fnUrl": {
-                            "enabled": false
-                        },
-                        "memory": 128,
-                        "packageType": "zip",
-                        "runtime": "nodejs20.x",
-                        "handler": "lambda.handler",
-                        "timeoutSecs": 3,
-                        "ephemeralStorage": 512
-                    },
-                    "basePath": ".",
-                    "buildType": "docker",
-                    "envVariables": {},
-                    "dockerContext": ".",
-                    "dockerfilePath": "Dockerfile",
-                    "includeEnvVariablesInBuild": true,
-                    "injectEnvVariablesInDockerfile": true
-                }
-            ]
+            "memory": 512,
+            "storage": 512,
+            "tracing": false,
+            "packageType": "image",
+            "timeoutSecs": 30,
+            "cpuArchitecture": ["x86_64"],
+            "reservedConcurrency": 1
+          },
+          "basePath": ".",
+          "buildType": "docker",
+          "envVariables": {},
+          "dockerContext": ".",
+          "dockerfilePath": "./Dockerfile",
+          "versionHistoryCount": 10,
+          "includeEnvVariablesInBuild": true,
+          "injectEnvVariablesInDockerfile": true
         },
         {
-            "id": "preview-1",
-            "name": "Preview",
-            "region": "eu-west-1",
-            "source": {
-                "pr": true,
-                "trigger": "push",
-                "filter": {
-                    "labels": [
-                        "deploy-preview"
-                    ]
-                }
+          "ci": { "type": "codebuild" },
+          "id": "lambda-function-f4ZyQ7",
+          "name": "Lambda Function",
+          "type": "lambda-function",
+          "lambda": {
+            "vpc": false,
+            "fnUrl": {
+              "enabled": true,
+              "authType": "None",
+              "invokeMode": "Buffered"
             },
-            "services": [
-                {
-                    "ci": {
-                        "type": "ec2",
-                        "storageIops": 3000,
-                        "storageType": "gp3",
-                        "instanceStorage": 30,
-                        "storageThroughput": 125
-                    },
-                    "id": "lambda-preview",
-                    "name": "Lambda Preview",
-                    "type": "lambda-function",
-                    "lambda": {
-                        "fnUrl": {
-                            "enabled": false
-                        },
-                        "memory": 128,
-                        "packageType": "image",
-                        "timeoutSecs": 3,
-                        "ephemeralStorage": 512
-                    },
-                    "basePath": ".",
-                    "buildType": "docker",
-                    "envVariables": {},
-                    "dockerContext": ".",
-                    "dockerfilePath": "Dockerfile",
-                    "includeEnvVariablesInBuild": true,
-                    "injectEnvVariablesInDockerfile": true
-                }
-            ]
+            "memory": 512,
+            "handler": "lambda.handler",
+            "runtime": "nodejs20.x",
+            "storage": 512,
+            "tracing": false,
+            "packageType": "zip",
+            "timeoutSecs": 30,
+            "cpuArchitecture": ["x86_64"],
+            "reservedConcurrency": 1,
+            "injectEnvVariablesInRuntime": false
+          },
+          "basePath": ".",
+          "buildType": "nixpacks",
+          "buildCommand": "echo 0",
+          "envVariables": {},
+          "outputDirectory": ".",
+          "versionHistoryCount": 10,
+          "includeEnvVariablesInBuild": true
         }
-    ]
+      ]
+    },
+    {
+      "id": "preview-1",
+      "name": "Preview",
+      "region": "eu-west-1",
+      "source": {
+        "pr": true,
+        "trigger": "push",
+        "filter": {
+          "labels": ["deploy-preview"]
+        }
+      },
+      "services": [
+        {
+          "ci": {
+            "type": "ec2",
+            "storageIops": 3000,
+            "storageType": "gp3",
+            "instanceStorage": 30,
+            "storageThroughput": 125
+          },
+          "id": "lambda-preview",
+          "name": "Lambda Preview",
+          "type": "lambda-function",
+          "lambda": {
+            "fnUrl": {
+              "enabled": false
+            },
+            "memory": 128,
+            "packageType": "image",
+            "timeoutSecs": 3,
+            "ephemeralStorage": 512
+          },
+          "basePath": ".",
+          "buildType": "docker",
+          "envVariables": {},
+          "dockerContext": ".",
+          "dockerfilePath": "Dockerfile",
+          "includeEnvVariablesInBuild": true,
+          "injectEnvVariablesInDockerfile": true
+        }
+      ]
+    }
+  ]
 }
