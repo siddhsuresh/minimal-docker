@@ -27,7 +27,9 @@
                             "enabled": false
                         },
                         "memory": 128,
-                        "packageType": "image",
+                        "packageType": "zip",
+                        "runtime": "nodejs20.x",
+                        "handler": "lambda.handler",
                         "timeoutSecs": 3,
                         "ephemeralStorage": 512
                     },
